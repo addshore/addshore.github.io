@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var timesNotInTheUk = [
+    // START 12 April 2017
+    // Summer trip
+    { from: "01 May 2017 00:00 GMT", to: "03 June 2017 00:00 GMT", loc: "Generic Europe" },
+    { from: "03 June 2017 00:00 GMT", to: "13 July 2017 00:00 GMT", loc: "Greece" },
+    // Wikimania, TODO confirm
+    { from: "03 June 2017 00:00 GMT", to: "13 July 2017 00:00 GMT", loc: "Canada" },
+];
+
+window.onload = function() {
+
+    var currentDate = new Date();
+    var isInTheUk = true;
+
+    for (i = 0; i < timesNotInTheUk.length; i++) {
+        if (currentDate > Date.parse(timesNotInTheUk[i].from) && currentDate < Date.parse(timesNotInTheUk[i].to)) {
+            isInTheUk = timesNotInTheUk[i].loc;
+        }
+    }
+
+    if (isInTheUk === true) {
+        document.getElementById("content").innerHTML = "Yes :)";
+    } else {
+        document.getElementById("content").innerHTML = "No :(";
+    }
+
+}
+</script>
+</head>
+
+<body>
+<div id="content"></div>
+</body>
+
+</html>
